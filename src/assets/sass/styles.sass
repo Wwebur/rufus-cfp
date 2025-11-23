@@ -1,0 +1,248 @@
+@use "bulma/sass/utilities/initial-variables" as *
+@use "bulma/sass/utilities/derived-variables" as * with (
+  $primary: #111f44,
+  $link: #99cc33,
+)
+
+@use "bulma/sass/layout/footer" with (
+  $footer-color: true,
+)
+@use "bulma/sass" as bulma
+@use "bulma/sass/utilities/mixins" as mixins
+
+
+html,
+body,
+#___gatsby,
+#gatsby-focus-wrapper,
+#layout-wrapper
+  height: 100%
+
+#layout-wrapper
+  width: 100%
+  display: flex
+  flex-direction: column
+
+#content-wrapper
+  flex: 1
+
+  .hero:first-of-type
+    padding-top: 10vh
+    // to mirror header height
+    display: flex
+    position: relative
+    overflow: hidden
+
+    &.hero-large
+      min-height: 90vh
+
+    &.hero-small
+      min-height: 70vh
+
+    #videobg
+      position: absolute
+      width: 100%
+      height: auto
+      z-index: 0
+      top: 50%
+      transform: translateY(-50%)
+      margin-top: 5vh
+      
+      +mixins.touch
+        width: auto
+        max-width: none
+        height: 100%
+        top: 0
+        left: 50%
+        transform: translate(-50%, 0)
+
+
+    .hero-body
+      margin: auto
+      height: auto
+      flex-grow: inherit
+      flex-shrink: inherit
+      position: relative
+      z-index: 1
+
+
++mixins.touch
+
+  #layout-wrapper 
+    overflow-x: hidden
+
+    nav.navbar
+      min-height: auto!important
+      padding: 1rem
+
+      .container
+        .navbar-brand 
+          .navbar-item
+            padding: 0
+
+    #logomarks 
+      .container.level 
+        .level-item
+          max-width: 80px
+          margin: 0.5rem
+          display: inline-block
+
+    .section
+      padding-left: 1rem
+      padding-right: 1rem
+
+
+
+nav.navbar
+  min-height: 10vh
+  border-bottom: 1px solid $grey-lightest
+
+  .navbar-item
+    .image
+      max-height: none
+
+  .logo 
+    text-transform: uppercase
+    letter-spacing: 0.75px
+    font-size: 1.4rem
+    margin-left: 10px
+    color: $primary
+    line-height: 1.2rem
+
+  .navbar-menu 
+    a 
+      line-height: 1.2rem
+
+
+
+.content .taglist
+  list-style: none
+  margin-bottom: 0
+  margin-left: 0
+  margin-right: 1.5rem
+  margin-top: 1.5rem
+  display: flex
+  flex-wrap: wrap
+  justify-content: left
+  align-items: center
+  li
+    padding: 0 2rem 1rem 0
+    margin-bottom: 1.5rem
+    margin-top: 0
+
+
+// Testimonials style
++mixins.desktop
+  .statictestimonial-column
+    .column
+      max-width: 50%
+
+
+.business-stages-tablet
+  display: none
+
++mixins.touch
+  .business-stages-desktop
+    display: none
+  .business-stages-tablet
+    display: block
+
+
+.vh-padding
+  padding-top: 10vh
+  padding-bottom: 10vh
+
+.testimonial-nametag 
+  align-self: center
+
+.margin-top-0
+  margin-top: 0 !important
+
+.contact
+  footer
+    .vh-padding
+      display: none
+    hr
+      display: none
+
+footer
+  p a:hover
+    color: $link
+
+
++mixins.desktop
+  .navbar-item
+    &.is-hoverable:hover
+      .navbar-dropdown
+        display: block
+
+.CookieBanner
+  background-color: $primary
+ 
+  .cookie-message
+    font-weight: 400
+
+a
+  color: #9c3
+  cursor: pointer
+  text-decoration: none
+
+a.navbar-item:hover
+  color: #9c3
+
+.navbar-brand a.navbar-item:hover
+  background-color: transparent
+
+.navbar-link:hover
+  background-color: #fafafa
+  color: #9c3
+
+.button.is-primary.is-outlined.is-focused, .button.is-primary.is-outlined.is-hovered, .button.is-primary.is-outlined:focus, .button.is-primary.is-outlined:hover
+  background-color: #111f44
+  border-color: #111f44
+  color: #fff
+
+.button.is-primary.is-outlined
+  background-color: transparent
+  border-color: #111f44
+  color: #111f44
+
+.control
+  box-sizing: border-box
+  clear: both
+  font-size: 1rem
+  position: relative
+  text-align: inherit
+
+.button
+  background-color: #fff
+  border-color: #dbdbdb
+  border-width: 1px
+  color: #363636
+  cursor: pointer
+  justify-content: center
+  padding: calc(.5em - 1px) 1em
+  text-align: center
+  white-space: nowrap
+  font-size: 1rem
+  height: 2.5em
+  font-weight: 400
+
+.button.is-primary
+  background-color: #111f44
+  border-color: transparent
+  color: #fff
+
+.button.is-light
+  background-color: #f5f5f5
+  border-color: transparent
+  color: rgba(0, 0, 0, .7)
+
+nav.navbar .navbar-menu a
+  line-height: 1.2rem
+
+.hero.is-primary .title
+  color: #fff
+
+.has-text-weight-bold
+  font-weight: 700 !important

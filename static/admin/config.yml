@@ -1,0 +1,128 @@
+backend:
+  name: git-gateway
+  branch: master
+
+publish_mode: editorial_workflow
+media_folder: src/assets/img
+public_folder: /img
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "src/pages/index.md"
+        label: "Home Page"
+        name: "home"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "home-page"}
+          - {label: Title, name: title, widget: string}
+          - {label: Heading, name: heading, widget: string}
+          - {label: Description, name: description, widget: string}
+          - {label: "Body", name: "body", widget: "markdown"}
+          - {label: "Background video", name: "video", widget: "list", fields: [{label: URL, name: url, widget: string}, {Label: Type, name: type, widget: string}]}
+          - {label: "Customer Groups", name: "customergroups", widget: "list", fields: [{label: "Group Name", name: "groupname", widget: "string"}, {Label: "Group Image", name: "image", widget: "image"}]}
+          - {label: "Testimonials", name: "testimonials", widget: "list", fields: [{label: Quote, name: quote, widget: string}, {label: Author, name: author, widget: string}, {label: Company, name: company, widget: string}, {Label: Image, name: image, widget: image},{Label: Backlink, name: backlink, widget: string}]}
+          - {label: "Meta Title", name: "meta_title", widget: "string"}
+          - {label: "Meta Description", name: "meta_description", widget: "text"}
+      - file: "src/pages/richard-pitt/index.md"
+        label: "Richard Pitt"
+        name: "richard-pitt"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "richard-pitt-page"}
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Body", name: "body", widget: "markdown"}
+          - {label: "Meta Title", name: "meta_title", widget: "string"}
+          - {label: "Meta Description", name: "meta_description", widget: "text"}
+      - file: "src/pages/established-broker/index.md"
+        label: "Established Brokers"
+        name: "established-broker"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "customer-page"}
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Background video", name: "video", widget: "list", fields: [{label: URL, name: url, widget: string}, {Label: Type, name: type, widget: string}]}
+          - {label: "Body", name: "body", widget: "markdown"}
+          - {label: "Meta Title", name: "meta_title", widget: "string"}
+          - {label: "Meta Description", name: "meta_description", widget: "text"}
+      - file: "src/pages/acquisitions/index.md"
+        label: "Acquisitions"
+        name: "acquisitions"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "customer-page"}
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Background video", name: "video", widget: "list", fields: [{label: URL, name: url, widget: string}, {Label: Type, name: type, widget: string}]}
+          - {label: "Body", name: "body", widget: "markdown"}
+          - {label: "Meta Title", name: "meta_title", widget: "string"}
+          - {label: "Meta Description", name: "meta_description", widget: "text"}
+      - file: "src/pages/startup-broker/index.md"
+        label: "Start Up Brokers"
+        name: "startup-broker"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "customer-page"}
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Background video", name: "video", widget: "list", fields: [{label: URL, name: url, widget: string}, {Label: Type, name: type, widget: string}]}
+          - {label: "Body", name: "body", widget: "markdown"}
+          - {label: "Meta Title", name: "meta_title", widget: "string"}
+          - {label: "Meta Description", name: "meta_description", widget: "text"}
+      - file: "src/pages/appointed-representative/index.md"
+        label: "Appointed Representative"
+        name: "appointed-representative"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "customer-page"}
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Background video", name: "video", widget: "list", fields: [{label: URL, name: url, widget: string}, {Label: Type, name: type, widget: string}]}
+          - {label: "Body", name: "body", widget: "markdown"}
+          - {label: "Meta Title", name: "meta_title", widget: "string"}
+          - {label: "Meta Description", name: "meta_description", widget: "text"}
+      - file: "src/pages/insurers-mga-lloyds/index.md"
+        label: "Insurers, MGA's and Lloyds"
+        name: "insurers-mga-lloyds"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "customer-page"}
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Background video", name: "video", widget: "list", fields: [{label: URL, name: url, widget: string}, {Label: Type, name: type, widget: string}]}
+          - {label: "Body", name: "body", widget: "markdown"}
+          - {label: "Meta Title", name: "meta_title", widget: "string"}
+          - {label: "Meta Description", name: "meta_description", widget: "text"}
+      - file: "src/pages/suppliers/index.md"
+        label: "suppliers"
+        name: "suppliers"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "customer-page"}
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Background video", name: "video", widget: "list", fields: [{label: URL, name: url, widget: string}, {Label: Type, name: type, widget: string}]}
+          - {label: "Body", name: "body", widget: "markdown"}
+          - {label: "Meta Title", name: "meta_title", widget: "string"}
+          - {label: "Meta Description", name: "meta_description", widget: "text"}
+      - file: "src/pages/privacy/index.md"
+        label: "Privacy Page"
+        name: "privacy"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "privacy-page"}
+          - {label: Title, name: title, widget: string}
+          - {label: Subtitle, name: subtitle, widget: string}
+          - {label: "Meta Title", name: "meta_title", widget: "string"}
+          - {label: "Meta Description", name: "meta_description", widget: "text"}
+      - file: "src/pages/contact/index.md"
+        label: "Contact Page"
+        name: "contact"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "contact-page"}
+          - {label: Title, name: title, widget: string}
+          - {label: Subtitle, name: subtitle, widget: string}
+          - {label: "Meta Title", name: "meta_title", widget: "string"}
+          - {label: "Meta Description", name: "meta_description", widget: "text"}
+  # - name: "blog"
+  #   label: "Blog"
+  #   folder: "src/pages/blog"
+  #   create: true
+  #   slug: "{{slug}}"
+  #   fields:
+  #     - {label: "Template Key", name: "templateKey", widget: "hidden", default: "article-page"}
+  #     - {label: "Title", name: "title", widget: "string"}
+  #     - {label: "Slug", name: "slug", widget: "string"}
+  #     - {label: "Publish Date", name: "date", widget: "datetime"}
+  #     - {label: "Cover", name: "cover", widget: "image"}
+  #     - {label: "Body", name: "body", widget: "markdown"}
+  #     - {label: "Tags", name: "tags", widget: "list"}
+  #     - {label: "Meta Title", name: "meta_title", widget: "string"}
+  #     - {label: "Meta Description", name: "meta_description", widget: "text"}

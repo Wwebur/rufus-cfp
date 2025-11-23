@@ -1,0 +1,14 @@
+[build]
+  publish = "public"
+  command = "npm install --legacy-peer-deps && gatsby build"
+  image = "ubuntu-20.04"
+
+[build.environment]
+  YARN_VERSION = "1.17.3"
+  YARN_FLAGS = "--no-ignore-optional"
+  NODE_VERSION = "18"
+  SHARP_IGNORE_GLOBAL_LIBVIPS = "1"
+  PYTHON = "/usr/bin/python3"
+
+[context.production]
+  image = "ubuntu-20.04"
