@@ -1,6 +1,6 @@
 import React from 'react'
 import config from '../../../config'
-import Helmet from 'react-helmet'
+import { Helmet } from "react-helmet-async"
 
 const SE0 = ({ title, meta_title, meta_desc, cover, slug, date }) => {
   const postURL = config.siteUrl + slug

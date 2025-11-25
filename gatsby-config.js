@@ -1,7 +1,7 @@
-const config = require('./config')
+const config = require("./config");
 
-const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
-const isDev = process.env.NODE_ENV === `development`
+const pathPrefix = config.pathPrefix === "/" ? "" : config.pathPrefix;
+const isDev = process.env.NODE_ENV === `development`;
 
 module.exports = {
   siteMetadata: {
@@ -18,39 +18,37 @@ module.exports = {
     },
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/src/assets/img`,
-        name: 'uploads',
+        name: "uploads",
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/src/pages`,
-        name: 'pages',
+        name: "pages",
       },
     },
     {
       resolve: `gatsby-plugin-gdpr-cookies`,
       options: {
         googleTagManager: {
-          trackingId: 'GTM-TTDHZB7', // leave empty if you want to disable the tracker
-          cookieName: 'gatsby-gdpr-google-tagmanager', // default
-          dataLayerName: 'dataLayer', // default
+          trackingId: "GTM-TTDHZB7", // leave empty if you want to disable the tracker
+          cookieName: "gatsby-gdpr-google-tagmanager", // default
+          dataLayerName: "dataLayer", // default
         },
         // Defines the environments where the tracking should be available  - default is ["production"]
-        environments: ['production', 'development'],
+        environments: ["production", "development"],
       },
     },
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-react-helmet-canonical-urls`,
       options: {
@@ -61,18 +59,18 @@ module.exports = {
       resolve: `gatsby-plugin-sitemap`,
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/src/assets/img`,
-        name: 'images',
+        name: "images",
       },
     },
     {
-      resolve: 'gatsby-transformer-remark',
+      resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
           {
-            resolve: 'gatsby-remark-images',
+            resolve: "gatsby-remark-images",
             options: {
               // It's important to specify the maxWidth (in pixels) of
               // the content container as this plugin uses this as the
@@ -88,10 +86,10 @@ module.exports = {
       options: {
         name: config.siteTitle,
         short_name: config.siteTitleAlt,
-        start_url: '/index.html',
+        start_url: "/index.html",
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
-        display: 'standalone',
+        display: "standalone",
         icons: [
           {
             src: `/icons/icon-192x192.png`,
@@ -107,7 +105,7 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-decap-cms',
+      resolve: "gatsby-plugin-decap-cms",
       options: {
         modulePath: `${__dirname}/src/cms/cms.js`,
         enableIdentityWidget: true,
@@ -128,15 +126,14 @@ module.exports = {
         includeInDevelopment: false,
       },
     },
-    `gatsby-plugin-offline`,
     {
-      resolve: 'gatsby-plugin-feed',
+      resolve: "gatsby-plugin-feed",
       options: {
-        setup (ref) {
-          const ret = ref.query.site.siteMetadata.rssMetadata
-          ret.allMarkdownRemark = ref.query.allMarkdownRemark
-          ret.generator = config.siteTitle
-          return ret
+        setup(ref) {
+          const ret = ref.query.site.siteMetadata.rssMetadata;
+          ret.allMarkdownRemark = ref.query.allMarkdownRemark;
+          ret.generator = config.siteTitle;
+          return ret;
         },
         query: `
                 {
@@ -157,13 +154,13 @@ module.exports = {
               `,
         feeds: [
           {
-            serialize (ctx) {
-              const rssMetadata = ctx.query.site.siteMetadata.rssMetadata
+            serialize(ctx) {
+              const rssMetadata = ctx.query.site.siteMetadata.rssMetadata;
               return ctx.query.allMarkdownRemark.edges
                 .filter(
-                  edge => edge.node.frontmatter.templateKey === 'article-page',
+                  (edge) => edge.node.frontmatter.templateKey === "article-page"
                 )
-                .map(edge => ({
+                .map((edge) => ({
                   categories: edge.node.frontmatter.tags,
                   date: edge.node.frontmatter.date,
                   title: edge.node.frontmatter.title,
@@ -171,14 +168,14 @@ module.exports = {
                   author: rssMetadata.author,
                   url: rssMetadata.site_url + edge.node.fields.slug,
                   guid: rssMetadata.site_url + edge.node.fields.slug,
-                  custom_elements: [{ 'content:encoded': edge.node.html }],
-                }))
+                  custom_elements: [{ "content:encoded": edge.node.html }],
+                }));
             },
             query: `
                     {
                       allMarkdownRemark(
                         limit: 1000,
-                        sort: { order: DESC, fields: [frontmatter___date] },
+                        sort: {frontmatter: {date: DESC}},
                       ) {
                         edges {
                           node {
@@ -240,7 +237,7 @@ module.exports = {
         index: [`title`, `tags`],
         store: [`id`, `title`, `tags`, `slug`],
         normalizer: ({ data }) =>
-          data.allMarkdownRemark.nodes.map(node => ({
+          data.allMarkdownRemark.nodes.map((node) => ({
             id: node.id,
             title: node.frontmatter.title,
             tags: node.frontmatter.tags || [],
@@ -250,4 +247,4 @@ module.exports = {
     },
     `gatsby-plugin-netlify`,
   ].filter(Boolean),
-}
+};

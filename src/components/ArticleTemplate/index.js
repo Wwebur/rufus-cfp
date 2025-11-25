@@ -1,3 +1,4 @@
+import React from 'react'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Content from '../Content'
 import { kebabCase } from 'lodash'

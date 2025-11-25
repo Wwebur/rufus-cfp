@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import * as React from "react";
 
-export default class HTML extends Component {
+export default class HTML extends React.Component {
   render () {
     return (
       <html lang='en'>

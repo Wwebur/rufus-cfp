@@ -1,5 +1,5 @@
 import React from 'react'
-import Helmet from 'react-helmet'
+import { Helmet } from "react-helmet-async"
 import Content from '../Content'
 import Logos from '../Logos'
 import VideoBG from '../VideoBG'

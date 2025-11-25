@@ -8,7 +8,7 @@ exports.createPages = ({ actions, graphql }) => {
 
   return graphql(`
     {
-      allMarkdownRemark(limit: 1000, sort: { order: DESC, fields: [frontmatter___date] }) {
+      allMarkdownRemark(limit: 1000, sort: {frontmatter: {date: DESC}}) {
         edges {
           node {
             excerpt(pruneLength: 400)
@@ -98,7 +98,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
   
   // Disable inference and define all types explicitly
   const typeDefs = `
-    type MarkdownRemark implements Node @dontInfer {
+    type MarkdownRemark implements Node {
       frontmatter: Frontmatter
       fields: Fields
       excerpt(pruneLength: Int = 140, truncate: Boolean = false): String
@@ -170,3 +170,23 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     })
   }
 }
+
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+  if (stage === "build-html") {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /gatsby-plugin-gdpr-cookies/,
+            use: loaders.null(),
+          },
+          {
+            test: /gatsby-plugin-decap-cms/,
+            use: loaders.null(),
+          },
+        ],
+      },
+    });
+  }
+};
+
